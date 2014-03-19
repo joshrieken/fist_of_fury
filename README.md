@@ -2,6 +2,16 @@
 
 Recurring jobs for [Sucker Punch](https://github.com/brandonhilkert/sucker_punch).
 
+**This is pre-alpha software. Use at your own risk!**
+
+## Why
+
+Sucker Punch offers the capability to run background jobs within the web server process, allowing for less use of resources and utilization of free hosting on services such as Heroku. However, it does not include the ability to run jobs at scheduled intervals. This is where Fist of Fury comes in.
+
+## What
+
+Fist of Fury is heavily inspired by [Sidetiq](https://github.com/tobiassvn/sidetiq) for [Sidekiq](https://github.com/mperham/sidekiq). It uses the [ice_cube](https://github.com/seejohnrun/ice_cube) gem for easy creation of recurrence rules.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -36,6 +46,17 @@ end
 ```
 
 Then in the initializer:
+
+```Ruby
+# config/initializers/fist_of_fury.rb
+
+# Ensures the jobs don't run while in the Rails console.
+unless defined?(Rails::Console)
+  FistOfFury.attack!
+end
+```
+
+Or you can even specify the recurrence rules all within the initializer:
 
 ```Ruby
 # config/initializers/fist_of_fury.rb
