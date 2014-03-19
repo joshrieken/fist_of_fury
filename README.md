@@ -1,12 +1,12 @@
-# FistOfFury
+# Fist of Fury
 
-TODO: Write a gem description
+Recurring jobs for [Sucker Punch](https://github.com/brandonhilkert/sucker_punch).
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'fist_of_fury'
+    gem 'fist_of_fury', '~> 0.1'
 
 And then execute:
 
@@ -18,7 +18,36 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You can schedule your jobs within the jobs themselves:
+
+```Ruby
+# app/jobs/say_hi_job.rb
+
+class SayHiJob
+  include SuckerPunch::Job
+  include FistOfFury::Recurrent
+
+  recurs { minutely }
+
+  def perform
+    Rails.logger.info 'Hi!'
+  end
+end
+```
+
+Then in the initializer:
+
+```Ruby
+# config/initializers/fist_of_fury.rb
+
+# Ensures the jobs don't run while in the Rails console.
+unless defined?(Rails::Console)
+  FistOfFury.attack! do
+    LogJob.recurs { secondly(3) }
+  end
+end
+```
+
 
 ## Contributing
 
