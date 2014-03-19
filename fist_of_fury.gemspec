@@ -15,12 +15,16 @@ Gem::Specification.new do |gem|
 
   gem.files         = `git ls-files -z`.split("\x0")
   gem.executables   = gem.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|gem|features)/})
+  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
   gem.add_development_dependency 'pry'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'guard'
+  gem.add_development_dependency 'guard-rspec'
 
-  gem.add_dependency 'sucker_punch', '~> 1.0.2'
+  gem.add_dependency 'sucker_punch', '>= 1.0.2'
+  gem.add_dependency 'celluloid',    '>= 0.15.2'
+  gem.add_dependency 'ice_cube',     '~> 0.11.3'
 end
