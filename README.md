@@ -2,7 +2,7 @@
 
 Recurring jobs for [Sucker Punch](https://github.com/brandonhilkert/sucker_punch).
 
-**This is pre-alpha software. Use at your own risk!**
+**This is alpha software. Use at your own risk!**
 
 ## Why
 
