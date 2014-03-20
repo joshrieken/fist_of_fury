@@ -4,6 +4,10 @@ require 'fist_of_fury/subclass_tracking_sharedspec'
 shared_examples_for 'a job with recurrence' do
   it_should_behave_like 'a class that tracks its subclasses'
 
+  after :each do
+    Celluloid::Actor.clear_registry
+  end
+
   describe '::schedule' do
     it 'returns a new schedule' do
       schedule = double('schedule')

@@ -19,6 +19,10 @@ class FistOfFury::Supervisor
     @dispatcher ||= FistOfFury::Dispatcher.new
   end
 end
+
+Dir[File.join(File.dirname(__FILE__), 'fixtures/**/*.rb')].each do |fixture|
+  require fixture
+end
 RSpec.configure do |config|
   config.after(:each) do
     # Clean up the master queue list
