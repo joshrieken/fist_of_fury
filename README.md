@@ -1,5 +1,7 @@
 # Fist of Fury
 
+[![Build Status](https://travis-ci.org/facto/fist_of_fury.png?branch=master)](https://travis-ci.org/facto/fist_of_fury)
+
 Recurring jobs for [Sucker Punch](https://github.com/brandonhilkert/sucker_punch).
 
 **This is alpha software. Use at your own risk!**
