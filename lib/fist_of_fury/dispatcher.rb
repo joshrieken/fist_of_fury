@@ -2,10 +2,10 @@ module FistOfFury
   class Dispatcher
     include Logging
 
-    def dispatch(worker, tick)
-      schedule = worker.schedule
-      return unless schedule.schedule_next?(tick)
-      enqueue(worker, schedule.next_occurrence(tick))
+    def dispatch(worker, time)
+      worker.schedule_next(time) do
+        enqueue(worker, worker.next_occurrence(time))
+      end
     rescue StandardError => e
       # TODO: exception handling support
       raise e

@@ -21,9 +21,9 @@ module FistOfFury
       1 - (current_time.to_f - start.to_f)
     end
 
-    def tick(tick = current_time)
+    def tick(time = current_time)
       FistOfFury.workers.each do |worker|
-        FistOfFury.dispatcher.dispatch(worker, tick)
+        FistOfFury.dispatcher.dispatch(worker, time)
       end
     end
   end

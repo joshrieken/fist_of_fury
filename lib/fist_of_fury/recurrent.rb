@@ -24,6 +24,10 @@ module FistOfFury
         schedule.options = options
       end
 
+      def schedule_next(time, &block)
+        schedule.schedule_next(time, &block)
+      end
+
       private
 
       def scheduled_occurrence(key)

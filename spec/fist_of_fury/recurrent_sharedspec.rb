@@ -41,4 +41,16 @@ shared_examples_for 'a job with recurrence' do
       described_class.recurs(options, &block)
     end
   end
+
+  describe '::schedule_next' do
+    let(:block) { lambda {} }
+    let(:time) { double('time') }
+    let(:schedule) { double('schedule') }
+
+    it 'delegates to the schedule' do
+      described_class.schedule = schedule
+      expect(schedule).to receive(:schedule_next).with(time)
+      described_class.schedule_next(time, &block)
+    end
+  end
 end
