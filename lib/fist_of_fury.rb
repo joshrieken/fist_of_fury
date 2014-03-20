@@ -14,6 +14,8 @@ require 'fist_of_fury/subclass_tracking'
 require 'fist_of_fury/api'
 require 'fist_of_fury/logging'
 require 'fist_of_fury/schedule'
+require 'fist_of_fury/clock'
+require 'fist_of_fury/dispatcher'
 require 'fist_of_fury/recurrent'
 require 'fist_of_fury/version'
 

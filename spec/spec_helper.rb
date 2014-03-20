@@ -10,6 +10,15 @@ end
 
 require 'fist_of_fury'
 
+class FistOfFury::Supervisor
+  def self.clock
+    @clock ||= FistOfFury::Clock.new
+  end
+
+  def self.dispatcher
+    @dispatcher ||= FistOfFury::Dispatcher.new
+  end
+end
 RSpec.configure do |config|
   config.after(:each) do
     # Clean up the master queue list
