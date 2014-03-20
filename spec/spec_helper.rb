@@ -3,6 +3,11 @@ begin
 rescue LoadError
 end
 
+if RUBY_PLATFORM != "java"
+  require 'coveralls'
+  Coveralls.wear!
+end
+
 require 'fist_of_fury'
 
 RSpec.configure do |config|

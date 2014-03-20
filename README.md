@@ -1,6 +1,7 @@
 # Fist of Fury
 
 [![Build Status](https://travis-ci.org/facto/fist_of_fury.png?branch=master)](https://travis-ci.org/facto/fist_of_fury)
+[![Coverage Status](https://coveralls.io/repos/facto/fist_of_fury/badge.png)](https://coveralls.io/r/facto/fist_of_fury)
 
 Recurring jobs for [Sucker Punch](https://github.com/brandonhilkert/sucker_punch).
 

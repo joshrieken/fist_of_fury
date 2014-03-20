@@ -25,6 +25,10 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'guard-rspec'
   gem.add_development_dependency 'ruby_gntp'
 
+  if RUBY_PLATFORM != "java"
+    gem.add_development_dependency 'coveralls'
+  end
+
   gem.add_dependency 'sucker_punch', '>= 1.0.2'
   gem.add_dependency 'celluloid',    '>= 0.15.2'
   gem.add_dependency 'ice_cube',     '~> 0.11.3'
