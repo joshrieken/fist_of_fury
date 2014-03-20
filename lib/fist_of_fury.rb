@@ -49,10 +49,8 @@ module FistOfFury
   end
 
   def attack!
-    return true if @attacking
     yield if block_given?
     FistOfFury::Supervisor.run!
-    @attacking = true
   end
 end
 
