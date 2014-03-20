@@ -17,12 +17,6 @@ module FistOfFury
         worker.schedule if worker.respond_to? :schedule
       end
 
-      def tick(tick = current_time)
-        FistOfFury.workers.each do |worker|
-          FistOfFury.dispatcher.dispatch(worker, tick)
-        end
-      end
-
       def current_time
         # TODO: configurable time zone support
         Time.now
@@ -44,6 +38,12 @@ module FistOfFury
         start = current_time
         yield
         1 - (current_time.to_f - start.to_f)
+      end
+
+      def tick(tick = current_time)
+        FistOfFury.workers.each do |worker|
+          FistOfFury.dispatcher.dispatch(worker, tick)
+        end
       end
     end
   end
