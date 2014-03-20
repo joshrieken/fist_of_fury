@@ -23,6 +23,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'guard'
   gem.add_development_dependency 'guard-rspec'
+  gem.add_development_dependency 'ruby_gntp'
 
   gem.add_dependency 'sucker_punch', '>= 1.0.2'
   gem.add_dependency 'celluloid',    '>= 0.15.2'
