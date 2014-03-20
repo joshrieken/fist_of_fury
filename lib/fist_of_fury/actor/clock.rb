@@ -8,7 +8,7 @@ module FistOfFury
 
       def initialize(*args, &block)
         after(0) do
-          debug 'FistOfFury::Clock looping...'
+          debug 'FistOfFury::Clock starting loop...'
           loop!
         end
       end
