@@ -4,6 +4,7 @@
 [![Dependency Status](https://gemnasium.com/facto/fist_of_fury.svg)](https://gemnasium.com/facto/fist_of_fury)
 [![Coverage Status](https://coveralls.io/repos/facto/fist_of_fury/badge.png)](https://coveralls.io/r/facto/fist_of_fury)
 [![Code Climate](https://codeclimate.com/github/facto/fist_of_fury.png)](https://codeclimate.com/github/facto/fist_of_fury)
+[![Gem Version](https://badge.fury.io/rb/fist_of_fury.png)](http://badge.fury.io/rb/fist_of_fury)
 
 Recurring jobs for [Sucker Punch](https://github.com/brandonhilkert/sucker_punch).
 
