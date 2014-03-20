@@ -5,8 +5,16 @@ describe FistOfFury do
   it_should_behave_like 'the api'
 
   describe '#logger' do
+    before :each do
+      FistOfFury.logger = nil
+    end
+
     it "delegates to Sucker Punch's logger" do
       expect(FistOfFury.logger).to eq SuckerPunch.logger
+    end
+
+    after :each do
+      FistOfFury.logger = Logger.new(nil)
     end
   end
 

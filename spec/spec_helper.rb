@@ -23,6 +23,10 @@ end
 Dir[File.join(File.dirname(__FILE__), 'fixtures/**/*.rb')].each do |fixture|
   require fixture
 end
+
+FistOfFury.logger = Logger.new(nil)
+# Celluloid.logger = Logger.new(nil)
+
 RSpec.configure do |config|
   config.after(:each) do
     # Clean up the master queue list
