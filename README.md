@@ -12,7 +12,7 @@ Recurring jobs for [Sucker Punch](https://github.com/brandonhilkert/sucker_punch
 
 ## Why
 
-Sucker Punch offers the capability to run background jobs within the web server process, allowing for less use of resources and utilization of free hosting on services such as Heroku. However, it does not include the ability to run jobs at scheduled intervals. This is where Fist of Fury comes in.
+Sucker Punch offers the ability to run background jobs *within the web server process*. Yes, this means you can host your app on Heroku without paying for an extra dyno for background jobs. However, Sucker Punch does not implement recurring jobs. Enter Fist of Fury!
 
 ## What
 
