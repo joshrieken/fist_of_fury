@@ -8,8 +8,6 @@
 
 Recurring jobs for [Sucker Punch](https://github.com/brandonhilkert/sucker_punch).
 
-**This is alpha software. Use at your own risk!**
-
 ## Why
 
 Sucker Punch offers the ability to run background jobs *within the web server process*. Yes, this means you can host your app on Heroku without paying for an extra dyno for background jobs. However, Sucker Punch does not implement recurring jobs. Enter Fist of Fury!
@@ -22,7 +20,7 @@ Fist of Fury is heavily inspired by [Sidetiq](https://github.com/tobiassvn/sidet
 
 Add this line to your application's Gemfile:
 
-    gem 'fist_of_fury', '~> 0.0.1'
+    gem 'fist_of_fury', '~> 0.1.0'
 
 And then execute:
 
