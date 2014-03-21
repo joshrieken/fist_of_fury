@@ -5,9 +5,12 @@ describe FistOfFury::Schedule do
 
   describe '#initialize' do
     it 'creates an IceCube schedule' do
-      ice_cube_schedule = double 'ice_cube_schedule'
-      allow(IceCube::Schedule).to receive(:new).with(described_class::START_TIME).and_return(ice_cube_schedule)
-      expect(schedule.ice_cube_schedule).to eq ice_cube_schedule
+      ice_cube_schedule = double('ice_cube_schedule')
+      start_time = double('start_time')
+      allow_any_instance_of(described_class).to receive(:start_time).and_return(start_time)
+      allow(IceCube::Schedule).to receive(:new).with(start_time).and_return(ice_cube_schedule)
+      expect_any_instance_of(described_class).to receive(:ice_cube_schedule=).with(ice_cube_schedule)
+      schedule
     end
   end
 
@@ -59,6 +62,28 @@ describe FistOfFury::Schedule do
     it 'delegates to ice_cube_schedule' do
       expect(schedule.ice_cube_schedule).to receive(:to_s)
       schedule.to_s
+    end
+  end
+
+  describe '#start_time' do
+    context 'when utc is enabled' do
+      before :each do
+        FistOfFury.configure do |config|
+          config.utc = true
+        end
+      end
+
+      it 'returns the utc start time' do
+        expect(Time).to receive(:utc)
+        schedule
+      end
+    end
+
+    context 'when utc is not enabled' do
+      it 'returns the local start time' do
+        expect(Time).to receive(:local)
+        schedule
+      end
     end
   end
 end

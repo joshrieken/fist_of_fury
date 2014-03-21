@@ -21,10 +21,6 @@ module FistOfFury
         info 'FistOfFury::Supervisor start'
         super
       end
-
-      def run
-        raise "FistOfFury::Supervisor should not be run in the foreground."
-      end
     end
   end
 end

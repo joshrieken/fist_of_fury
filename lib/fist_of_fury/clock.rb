@@ -9,8 +9,7 @@ module FistOfFury
     end
 
     def current_time
-      # TODO: configurable time zone support
-      Time.now
+      FistOfFury.config.utc ? Time.now.utc : Time.now
     end
 
     protected

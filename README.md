@@ -75,6 +75,15 @@ unless defined?(Rails::Console)
 end
 ```
 
+## Configuration Options
+
+In the initializer:
+
+```Ruby
+FistOfFury.configure do |config|
+  config.utc = true # false by default; makes all time within Fist of Fury UTC
+end
+```
 
 ## Contributing
 

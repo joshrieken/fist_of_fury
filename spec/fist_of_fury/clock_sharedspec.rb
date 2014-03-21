@@ -14,10 +14,30 @@ shared_examples_for 'a clock' do
   end
 
   describe '#current_time' do
-    it 'returns the current time' do
-      now = double('now')
-      Time.stub(:now).and_return(now)
-      expect(subject.current_time).to eq now
+    context 'when UTC is enabled' do
+      before :each do
+        FistOfFury.configure { |config| config.utc = true }
+      end
+
+      it 'returns the current time in UTC' do
+        now = double('now')
+        utc = double('utc')
+        now.stub(:utc).and_return(utc)
+        Time.stub(:now).and_return(now)
+        expect(subject.current_time).to eq utc
+      end
+    end
+
+    context 'when UTC is not enabled' do
+      before :each do
+        FistOfFury.configure { |config| config.utc = false }
+      end
+
+      it 'returns the current time in the default time zone' do
+        now = double('now')
+        Time.stub(:now).and_return(now)
+        expect(subject.current_time).to eq now
+      end
     end
   end
 end

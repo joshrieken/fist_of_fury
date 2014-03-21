@@ -2,11 +2,8 @@ module FistOfFury
   class Schedule
     attr_accessor :options, :ice_cube_schedule, :last_occurrence
 
-    # TODO: configurable timezone support
-    START_TIME = Time.local(2010, 1, 1)
-
     def initialize
-      self.ice_cube_schedule = IceCube::Schedule.new(START_TIME)
+      self.ice_cube_schedule = IceCube::Schedule.new(start_time)
     end
 
     def method_missing(meth, *args, &block)
@@ -29,6 +26,10 @@ module FistOfFury
 
     def to_s
       ice_cube_schedule.to_s
+    end
+
+    def start_time
+      @start_time ||= FistOfFury.config.utc ? Time.utc(2010, 1, 1) : Time.local(2010, 1, 1)
     end
 
     private

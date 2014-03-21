@@ -10,6 +10,7 @@ require 'sucker_punch'
 require 'celluloid'
 
 # internal
+require 'fist_of_fury/config'
 require 'fist_of_fury/subclass_tracking'
 require 'fist_of_fury/api'
 require 'fist_of_fury/logging'

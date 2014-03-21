@@ -10,16 +10,6 @@ end
 
 require 'fist_of_fury'
 
-class FistOfFury::Supervisor
-  def self.clock
-    @clock ||= FistOfFury::Clock.new
-  end
-
-  def self.dispatcher
-    @dispatcher ||= FistOfFury::Dispatcher.new
-  end
-end
-
 Dir[File.join(File.dirname(__FILE__), 'fixtures/**/*.rb')].each do |fixture|
   require fixture
 end
@@ -31,5 +21,18 @@ RSpec.configure do |config|
   config.after(:each) do
     # Clean up the master queue list
     SuckerPunch::Queues.instance_variable_set(:@queues, Set.new)
+
+    # Make sure supervisor is fake
+    class ::FistOfFury::Supervisor
+      def self.clock
+        @clock ||= FistOfFury::Clock.new
+      end
+
+      def self.dispatcher
+        @dispatcher ||= FistOfFury::Dispatcher.new
+      end
+    end
+
+    FistOfFury.configure_with_defaults
   end
 end
