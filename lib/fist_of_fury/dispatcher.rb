@@ -4,7 +4,7 @@ module FistOfFury
 
     def dispatch(worker, time)
       worker.schedule_next(time) do
-        enqueue(worker, worker.next_occurrence(time))
+        enqueue(worker, worker.next_scheduled_occurrence)
       end
     rescue StandardError => e
       # TODO: exception handling support
