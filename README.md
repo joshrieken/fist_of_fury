@@ -30,13 +30,17 @@ Or install it yourself as:
 
     $ gem install fist_of_fury
 
+### Rails
+
+Run the install generator, which installs an initializer:
+
+    $ rails generate fist_of_fury:install
+
 ## Usage
 
 You can schedule your jobs within the jobs themselves:
 
 ```Ruby
-# app/jobs/say_hi_job.rb
-
 class SayHiJob
   include SuckerPunch::Job
   include FistOfFury::Recurrent
@@ -49,33 +53,21 @@ class SayHiJob
 end
 ```
 
-Then in the initializer:
+Somewhere, you need to kick off the process:
 
 ```Ruby
-# config/initializers/fist_of_fury.rb
-
-# Ensures the jobs run only in a web server.
-if defined?(Rails::Server)
-  FistOfFury.attack!
-end
+FistOfFury.attack!
 ```
 
-Or you can even specify the recurrence rules all within the initializer:
+You can specify the recurrence rules during kickoff:
 
 ```Ruby
-# config/initializers/fist_of_fury.rb
-
-# Ensures the jobs run only in a web server.
-if defined?(Rails::Server)
-  FistOfFury.attack! do
-    LogJob.recurs { secondly(3) }
-  end
+FistOfFury.attack! do
+  LogJob.recurs { secondly(3) }
 end
 ```
 
 ## Configuration Options
-
-In the initializer:
 
 ```Ruby
 FistOfFury.configure do |config|
