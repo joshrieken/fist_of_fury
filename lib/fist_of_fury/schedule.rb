@@ -20,8 +20,8 @@ module FistOfFury
 
     def schedule_next(time)
       return unless schedule_next?(time)
-      yield
       self.last_occurrence = next_occurrence(time)
+      yield
     end
 
     def to_s
