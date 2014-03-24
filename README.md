@@ -54,8 +54,8 @@ Then in the initializer:
 ```Ruby
 # config/initializers/fist_of_fury.rb
 
-# Ensures the jobs don't run while in the Rails console.
-unless defined?(Rails::Console)
+# Ensures the jobs run only in a web server.
+if defined?(Rails::Server)
   FistOfFury.attack!
 end
 ```
@@ -65,8 +65,8 @@ Or you can even specify the recurrence rules all within the initializer:
 ```Ruby
 # config/initializers/fist_of_fury.rb
 
-# Ensures the jobs don't run while in the Rails console.
-unless defined?(Rails::Console)
+# Ensures the jobs run only in a web server.
+if defined?(Rails::Server)
   FistOfFury.attack! do
     LogJob.recurs { secondly(3) }
   end
