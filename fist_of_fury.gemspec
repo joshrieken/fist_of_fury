@@ -25,7 +25,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'guard-rspec'
   gem.add_development_dependency 'ruby_gntp'
 
-  if RUBY_PLATFORM != "java"
+  if RUBY_PLATFORM != 'java'
     gem.add_development_dependency 'coveralls'
   end
 
