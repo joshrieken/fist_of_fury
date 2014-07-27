@@ -43,7 +43,7 @@ describe FistOfFury do
       allow(FistOfFury::Supervisor).to receive(:run!)
       block_called = false
       FistOfFury.attack! { block_called = true }
-      expect(block_called).to be_true
+      expect(block_called).to eq true
     end
 
     it 'calls #run! on the supervisor' do

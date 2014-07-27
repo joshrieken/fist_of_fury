@@ -31,7 +31,7 @@ describe FistOfFury::Schedule do
       it 'calls the block' do
         block_called = false
         schedule.schedule_next(time) { block_called = true }
-        expect(block_called).to be_true
+        expect(block_called).to eq true
       end
 
       it 'sets the last occurrence' do
@@ -48,7 +48,7 @@ describe FistOfFury::Schedule do
       it 'does not call the block' do
         block_called = false
         schedule.schedule_next(time) { block_called = true }
-        expect(block_called).to be_false
+        expect(block_called).to eq false
       end
 
       it 'does not set the last occurrence' do

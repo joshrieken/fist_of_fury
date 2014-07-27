@@ -15,7 +15,7 @@ describe FistOfFury do
           expect(config).to eq(config)
           block_called = true
         end
-        expect(block_called).to be_true
+        expect(block_called).to eq true
       end
     end
 
@@ -32,7 +32,7 @@ describe FistOfFury do
           expect(config).to eq(config)
           block_called = true
         end
-        expect(block_called).to be_true
+        expect(block_called).to eq true
       end
     end
 
