@@ -29,7 +29,7 @@ Gem::Specification.new do |gem|
     gem.add_development_dependency 'coveralls'
   end
 
-  gem.add_dependency 'sucker_punch', '>= 1.0.2'
+  gem.add_dependency 'sucker_punch', '>= 1.1.0'
   gem.add_dependency 'celluloid',    '>= 0.15.2'
   gem.add_dependency 'ice_cube',     '~> 0.12.0'
 end
