@@ -53,7 +53,7 @@ class SayHiJob
 end
 ```
 
-Somewhere, you need to kick off the process:
+If you did not run the install generator, you need to kick off the process somewhere (like an initializer) with this:
 
 ```Ruby
 FistOfFury.attack!
