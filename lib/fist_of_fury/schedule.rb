@@ -19,7 +19,7 @@ module FistOfFury
     end
 
     def schedule_next(time)
-      return unless schedule_next?(time)
+      return unless can_schedule_next?(time)
       self.last_occurrence = next_occurrence(time)
       yield
     end
@@ -29,7 +29,7 @@ module FistOfFury
     end
 
     def start_time
-      @start_time ||= FistOfFury.config.utc ? Time.utc(2010, 1, 1) : Time.local(2010, 1, 1)
+      @start_time ||= FistOfFury.config.utc ? Time.now.utc : Time.now
     end
 
     private
@@ -38,7 +38,10 @@ module FistOfFury
       ice_cube_schedule.next_occurrence(time)
     end
 
-    def schedule_next?(time)
+    def can_schedule_next?(time)
+      unless last_occurrence
+        self.last_occurrence = next_occurrence(time)
+      end
       last_occurrence != next_occurrence(time)
     end
   end

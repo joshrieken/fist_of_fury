@@ -25,7 +25,7 @@ describe FistOfFury::Schedule do
 
     context 'when it should be scheduled' do
       before :each do
-        allow(schedule).to receive(:schedule_next?).and_return(true)
+        allow(schedule).to receive(:can_schedule_next?).and_return(true)
       end
 
       it 'calls the block' do
@@ -42,7 +42,7 @@ describe FistOfFury::Schedule do
 
     context 'when it should not be scheduled' do
       before :each do
-        allow(schedule).to receive(:schedule_next?).and_return(false)
+        allow(schedule).to receive(:can_schedule_next?).and_return(false)
       end
 
       it 'does not call the block' do
@@ -74,14 +74,16 @@ describe FistOfFury::Schedule do
       end
 
       it 'returns the utc start time' do
-        expect(Time).to receive(:utc)
+        now = double('now')
+        allow(now).to receive(:utc).and_return(Time.now.utc)
+        expect(Time).to receive(:now).and_return now
         schedule
       end
     end
 
     context 'when utc is not enabled' do
       it 'returns the local start time' do
-        expect(Time).to receive(:local)
+        expect(Time).to receive(:now).and_return(Time.now.utc)
         schedule
       end
     end
