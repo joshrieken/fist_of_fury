@@ -53,6 +53,8 @@ class SayHiJob
 end
 ```
 
+**GOTCHA WARNING:** If you define the recurrence rules within the job classes themselves, you may run into an issue where your jobs never run in development. By default, Rails does not eager load code in development, and thus will not load your job classes, resulting in your jobs not being scheduled. Either set `config.eager_load = true` in `development.rb` or reference your job classes somewhere in an initializer (`config/fist_of_fury.rb` is a good candidate).
+
 If you did not run the install generator, you need to kick off the process somewhere (like an initializer) with this:
 
 ```Ruby
