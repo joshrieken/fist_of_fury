@@ -1,5 +1,7 @@
 # Fist of Fury
 
+## CRITICAL NOTE: This project is no longer maintained, nor do I recommend its usage for anything other than messing around with the concept, up to and including production use.
+
 [![Build Status](https://travis-ci.org/facto/fist_of_fury.png?branch=master)](https://travis-ci.org/facto/fist_of_fury)
 [![Dependency Status](https://gemnasium.com/facto/fist_of_fury.svg)](https://gemnasium.com/facto/fist_of_fury)
 [![Coverage Status](https://coveralls.io/repos/facto/fist_of_fury/badge.png)](https://coveralls.io/r/facto/fist_of_fury)
