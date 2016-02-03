@@ -1,6 +1,6 @@
 # Fist of Fury
 
-## DEPRECATED: This project is no longer maintained. I do not recommend you use it for anything other than messing around with the concept. I certainly would not use it in production.
+## DEPRECATED: This project is no longer maintained. I recommend using it only for messing around with the concept.
 
 [![Build Status](https://travis-ci.org/facto/fist_of_fury.png?branch=master)](https://travis-ci.org/facto/fist_of_fury)
 [![Dependency Status](https://gemnasium.com/facto/fist_of_fury.svg)](https://gemnasium.com/facto/fist_of_fury)
