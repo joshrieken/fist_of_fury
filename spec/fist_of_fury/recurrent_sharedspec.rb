@@ -16,20 +16,6 @@ shared_examples_for 'a job with recurrence' do
     end
   end
 
-  describe '::last_scheduled_occurrence' do
-    it 'calls scheduled_occurrence with the right arguments' do
-      expect(described_class).to receive(:scheduled_occurrence).with('last')
-      described_class.last_scheduled_occurrence
-    end
-  end
-
-  describe '::next_scheduled_occurrence' do
-    it 'calls scheduled_occurrence with the right arguments' do
-      expect(described_class).to receive(:scheduled_occurrence).with('next')
-      described_class.next_scheduled_occurrence
-    end
-  end
-
   describe '::recurs' do
     it 'evaluate the block within the context of the schedule and sets the options' do
       block = lambda {}
@@ -42,15 +28,15 @@ shared_examples_for 'a job with recurrence' do
     end
   end
 
-  describe '::schedule_next' do
+  describe '::scheduled_time_met?' do
     let(:block) { lambda {} }
     let(:time) { double('time') }
     let(:schedule) { double('schedule') }
 
     it 'delegates to the schedule' do
       described_class.schedule = schedule
-      expect(schedule).to receive(:schedule_next).with(time)
-      described_class.schedule_next(time, &block)
+      expect(schedule).to receive(:scheduled_time_met?).with(time)
+      described_class.scheduled_time_met?(time, &block)
     end
   end
 end

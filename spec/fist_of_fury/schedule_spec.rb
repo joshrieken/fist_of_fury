@@ -6,54 +6,39 @@ describe FistOfFury::Schedule do
   describe '#initialize' do
     it 'creates an IceCube schedule' do
       ice_cube_schedule = double('ice_cube_schedule')
-      start_time = double('start_time')
-      allow_any_instance_of(described_class).to receive(:start_time).and_return(start_time)
-      allow(IceCube::Schedule).to receive(:new).with(start_time).and_return(ice_cube_schedule)
+      allow(IceCube::Schedule).to receive(:new).and_return(ice_cube_schedule)
       expect_any_instance_of(described_class).to receive(:ice_cube_schedule=).with(ice_cube_schedule)
       schedule
     end
   end
 
-  describe '#schedule_next' do
+  describe '#scheduled_time_met?' do
     let(:time) { double('time') }
-    let(:block) { lambda {} }
     let(:next_occurrence) { double('next_occurrence') }
 
     before :each do
-      allow(schedule).to receive(:next_occurrence).and_return(next_occurrence)
+      allow(schedule).to receive(:next_occurrence).with(time).and_return(next_occurrence)
     end
 
-    context 'when it should be scheduled' do
-      before :each do
-        allow(schedule).to receive(:can_schedule_next?).and_return(true)
-      end
-
-      it 'calls the block' do
-        block_called = false
-        schedule.schedule_next(time) { block_called = true }
-        expect(block_called).to eq true
+    context 'when it has been met' do
+      before do
+        allow(schedule).to receive(:last_occurrence_is_next_occurrence?).and_return(false)
       end
 
       it 'sets the last occurrence' do
-        expect(schedule).to receive(:last_occurrence=).with(next_occurrence)
-        schedule.schedule_next(time, &block)
+        expect(schedule).to receive(:last_occurrence=).with(next_occurrence).exactly(2).times
+        schedule.scheduled_time_met?(time)
       end
     end
 
-    context 'when it should not be scheduled' do
-      before :each do
-        allow(schedule).to receive(:can_schedule_next?).and_return(false)
-      end
-
-      it 'does not call the block' do
-        block_called = false
-        schedule.schedule_next(time) { block_called = true }
-        expect(block_called).to eq false
+    context 'when it has not been met' do
+      before do
+        allow(schedule).to receive(:last_occurrence_is_next_occurrence?).and_return(true)
       end
 
       it 'does not set the last occurrence' do
-        expect(schedule).not_to receive(:last_occurrence=).with(next_occurrence)
-        schedule.schedule_next(time, &block)
+        expect(schedule).to receive(:last_occurrence=).with(next_occurrence)
+        schedule.scheduled_time_met?(time)
       end
     end
   end

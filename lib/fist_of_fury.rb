@@ -46,11 +46,6 @@ module FistOfFury
   def dispatcher
     FistOfFury::Supervisor.dispatcher
   end
-
-  def store
-    @store ||= {}
-  end
-
   def attack!
     yield if block_given?
     FistOfFury::Supervisor.run!
