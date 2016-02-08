@@ -25,12 +25,6 @@ describe FistOfFury do
     end
   end
 
-  describe '#store' do
-    it 'starts out as an empty hash' do
-      expect(FistOfFury.store).to eq Hash.new
-    end
-  end
-
   describe '#dispatcher' do
     it "delegates to the supervisor's dispatcher" do
       expect(FistOfFury::Supervisor).to receive(:dispatcher)

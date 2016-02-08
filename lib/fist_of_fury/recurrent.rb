@@ -11,27 +11,13 @@ module FistOfFury
         @schedule ||= FistOfFury::Schedule.new
       end
 
-      def last_scheduled_occurrence
-        scheduled_occurrence 'last'
-      end
-
-      def next_scheduled_occurrence
-        scheduled_occurrence 'next'
-      end
-
       def recurs(options={}, &block)
         schedule.instance_eval(&block)
         schedule.options = options
       end
 
-      def schedule_next(time, &block)
-        schedule.schedule_next(time, &block)
-      end
-
-      private
-
-      def scheduled_occurrence(key)
-        (FistOfFury.store["#{self.class.to_s}:#{key}"] || -1).to_f
+      def scheduled_time_met?(time)
+        schedule.scheduled_time_met?(time)
       end
     end
 
