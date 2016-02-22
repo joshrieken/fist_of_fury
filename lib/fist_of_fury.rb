@@ -1,13 +1,14 @@
 # stdlib
 require 'ostruct'
-require 'singleton'
-require 'socket'
+# require 'singleton'
+# require 'socket'
 require 'time'
 
 # gems
 require 'ice_cube'
 require 'sucker_punch'
-require 'celluloid'
+require 'sucker_punch/async_syntax' # Add support for Sucker Punch 2.0
+require 'celluloid/current'
 
 # internal
 require 'fist_of_fury/config'
