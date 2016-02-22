@@ -1,6 +1,6 @@
 module FistOfFury
-  class Supervisor < Celluloid::SupervisionGroup
-    supervise FistOfFury::Actor::Clock, as: :fist_of_fury_clock
+  class Supervisor < Celluloid::Supervision::Container 
+    supervise type: FistOfFury::Actor::Clock, as: :fist_of_fury_clock
     # TODO: configurable pool size. For now, use Celluloid's CPU-based default.
     pool FistOfFury::Actor::Dispatcher, as: :fist_of_fury_dispatcher
 
